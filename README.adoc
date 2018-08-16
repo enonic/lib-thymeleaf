@@ -1,0 +1,28 @@
+= Thymeleaf library
+
+Thymeleaf library allows you to render templates using the https://www.thymeleaf.org/[Thymeleaf template engine]
+
+== Compatibility
+
+[cols="1,1,3", options="header"]
+|===
+|Version
+|XP Version
+|Dependency
+
+|1.0.0
+|6.14.x
+|com.enonic.lib:lib-thymeleaf:1.0.0
+|===
+
+== Build
+
+To build this project, execute the following:
+
+[source,bash]
+----
+./gradlew clean build
+----
+
+== https://github.com/enonic/lib-thymeleaf/tree/master/docs/index.adoc[Documentation]
+
