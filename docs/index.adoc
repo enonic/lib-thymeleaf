@@ -22,7 +22,7 @@ To use this library in your JavaScript code, it first needs to be required:
 var thymeleafLib = require('/lib/thymeleaf');
 ----
 
-Then, you will need to resolve your template/view.
+Then, you will need to resolve your template:
 
 [source,js]
 ----
@@ -62,11 +62,11 @@ var model = {
 };
 ----
 
-Non mandatory *_options_* parameter with rendering mode might be used as 3rd argument:
+Thymeleaf template mode might be set:
 
 [source,js]
 ----
-var options = { mode: 'HTML' };
+var options = { mode: 'HTML' }; // default mode
 ----
 
 To process template:
@@ -74,6 +74,13 @@ To process template:
 [source,js]
 ----
 var result = thymeleaf.render(view, model, options);
+----
+
+or simply:
+
+[source,js]
+----
+var result = thymeleaf.render(view, model);
 ----
 
 Output:
@@ -109,4 +116,4 @@ Renders a thymeleaf template .
 
 * `view` (_object_) Location of the template. Use resolve(..) to resolve a template.
 * `model` (_object_) Model used to render the template.
-* `options` (_object_) *_Non mandatory_* Rendering mode. HTML is used by default. Valid options are: HTML, XML, TEXT, JAVASCRIPT, CSS and RAW.
+* `options` (_object_) *_Optional_* Template mode. HTML is used by default. Valid options are: HTML, XML, TEXT, JAVASCRIPT, CSS and RAW.
