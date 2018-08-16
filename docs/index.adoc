@@ -1,0 +1,112 @@
+= Thymeleaf library
+
+image::https://img.shields.io/badge/xp-6.+-blue.svg[role="right"]
+
+Thymeleaf library allows you to render templates using the https://www.thymeleaf.org/[Thymeleaf template engine]
+
+To start using this library, add the following into your `build.gradle` file:
+
+[source,groovy]
+----
+dependencies {
+  include 'com.enonic.lib:lib-thymeleaf:1.0.0'
+}
+----
+
+== Usage
+
+To use this library in your JavaScript code, it first needs to be required:
+
+[source,js]
+----
+var thymeleafLib = require('/lib/thymeleaf');
+----
+
+Then, you will need to resolve your template/view.
+
+[source,js]
+----
+var view = resolve('view/test.html');
+----
+
+Template:
+
+[source,html]
+----
+<div>
+    <div data-th-each="fruit : ${fruits}">
+        Name:
+        <div data-th-text="${fruit.name}">Name</div>
+        Color:
+        <div data-th-text="${fruit.color}">Color</div>
+    </div>
+</div>
+
+----
+
+All the variables used in the template/view must be gathered into a JSON object:
+
+[source,js]
+----
+var model = {
+    fruits: [
+        {
+            name: 'Apple',
+            color: 'Red'
+        },
+        {
+            name: 'Pear',
+            color: 'Green'
+        }
+    ]
+};
+----
+
+Non mandatory *_options_* parameter with rendering mode might be used as 3rd argument:
+
+[source,js]
+----
+var options = { mode: 'HTML' };
+----
+
+To process template:
+
+[source,js]
+----
+var result = thymeleaf.render(view, model, options);
+----
+
+Output:
+
+[source,html]
+----
+<div>
+    <div>
+        Name:
+        <div>Apple</div>
+        Color:
+        <div>Red</div>
+    </div>
+    <div>
+        Name:
+        <div>Pear</div>
+        Color:
+        <div>Green</div>
+    </div>
+</div>
+
+----
+
+== API
+
+The following function is  defined in this library.
+
+=== `render`
+
+Renders a thymeleaf template .
+
+*Parameters*
+
+* `view` (_object_) Location of the template. Use resolve(..) to resolve a template.
+* `model` (_object_) Model used to render the template.
+* `options` (_object_) *_Non mandatory_* Rendering mode. HTML is used by default. Valid options are: HTML, XML, TEXT, JAVASCRIPT, CSS and RAW.
