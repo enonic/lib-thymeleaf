@@ -27,7 +27,7 @@ public class ThymeleafServiceTest
     public void testProcess()
     {
         final ThymeleafProcessor processor = this.service.newProcessor();
-        processor.setView( ResourceKey.from( "myapp:/site/view/test.html" ) );
+        processor.setView( ResourceKey.from( "myapp:/view/test.html" ) );
         processor.setModel( null );
         processor.setMode( null );
         processor.process();
@@ -37,7 +37,7 @@ public class ThymeleafServiceTest
     public void testProcessError()
     {
         final ThymeleafProcessor processor = this.service.newProcessor();
-        processor.setView( ResourceKey.from( "myapp:/site/view/error.html" ) );
+        processor.setView( ResourceKey.from( "myapp:/view/error.html" ) );
         processor.setModel( null );
         processor.setMode( null );
         processor.process();
@@ -52,7 +52,7 @@ public class ThymeleafServiceTest
         com.enonic.xp.trace.Tracer.setManager( manager );
 
         final ThymeleafProcessor processor = this.service.newProcessor();
-        processor.setView( ResourceKey.from( "myapp:/site/view/test.html" ) );
+        processor.setView( ResourceKey.from( "myapp:/view/test.html" ) );
         processor.setModel( null );
         processor.setMode( null );
         processor.process();
