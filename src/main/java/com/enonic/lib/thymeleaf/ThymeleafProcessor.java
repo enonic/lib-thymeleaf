@@ -2,6 +2,7 @@ package com.enonic.lib.thymeleaf;
 
 import java.util.Map;
 
+import org.apache.commons.io.FilenameUtils;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.TemplateSpec;
 import org.thymeleaf.context.Context;
@@ -9,6 +10,7 @@ import org.thymeleaf.exceptions.TemplateProcessingException;
 import org.thymeleaf.templatemode.TemplateMode;
 
 import com.google.common.collect.Maps;
+import com.google.common.io.Files;
 
 import com.enonic.xp.resource.ResourceKey;
 import com.enonic.xp.resource.ResourceProblemException;
@@ -103,12 +105,57 @@ public final class ThymeleafProcessor
     private RuntimeException handleException( final TemplateProcessingException e )
     {
         final int lineNumber = e.getLine() != null ? e.getLine() : 0;
-        final ResourceKey resource = e.getTemplateName() != null ? ResourceKey.from( e.getTemplateName() ) : null;
+        final ResourceKey resource = getTemplateResource( e.getTemplateName() );
+        String message = e.getMessage();
+        if ( resource == null )
+        {
+            message = "Error in Thymeleaf template '" + e.getTemplateName() + "' : " + e.getMessage();
+        }
+
         return ResourceProblemException.create().
             lineNumber( lineNumber ).
             resource( resource ).
             cause( e ).
-            message( e.getMessage() ).
+            message( message ).
             build();
+    }
+
+    private ResourceKey getTemplateResource( final String templateName )
+    {
+        if ( templateName == null )
+        {
+            return null;
+        }
+
+        try
+        {
+            return ResourceKey.from( templateName );
+        }
+        catch ( final Exception e )
+        {
+            try
+            {
+                return ResourceKey.from( this.view.getApplicationKey(), resolveTemplatePath( templateName ) );
+            }
+            catch ( Exception ex )
+            {
+                return null;
+            }
+        }
+    }
+
+    private String resolveTemplatePath( final String templateName )
+    {
+        String path = templateName;
+        if ( FilenameUtils.getExtension( templateName ).isEmpty() )
+        {
+            path += ".html";
+        }
+
+        if ( templateName.startsWith( "./" ) || templateName.startsWith( "../" ) )
+        {
+            return Files.simplifyPath( this.view.getPath() + "/../" + path );
+        }
+        return path;
     }
 }
