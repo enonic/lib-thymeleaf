@@ -17,7 +17,7 @@ public class ThymeleafScriptTest
     @Override
     public String getScriptTestFile()
     {
-        return "/site/thymeleaf-test.js";
+        return "/thymeleaf-test.js";
     }
 
     @Override

@@ -71,5 +71,5 @@ exports.testJsExec = function () {
 };
 
 exports.testExamples = function () {
-    testInstance.runScript('/site/lib/examples/thymeleaf/render.js')
+    testInstance.runScript('/lib/examples/thymeleaf/render.js')
 };
