@@ -1,6 +1,6 @@
 = Thymeleaf library
 
-image::https://img.shields.io/badge/xp-6.+-blue.svg[role="right"]
+image::https://img.shields.io/badge/xp-7.+-blue.svg[role="right"]
 
 Thymeleaf library allows you to render templates using the https://www.thymeleaf.org/[Thymeleaf template engine]
 
