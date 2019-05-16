@@ -1,6 +1,6 @@
 = Thymeleaf library
 
-image::https://img.shields.io/badge/xp-6.+-blue.svg[role="right"]
+image::https://img.shields.io/badge/xp-7.+-blue.svg[role="right"]
 
 Thymeleaf library allows you to render templates using the https://www.thymeleaf.org/[Thymeleaf template engine]
 
@@ -9,7 +9,7 @@ To start using this library, add the following into your `build.gradle` file:
 [source,groovy]
 ----
 dependencies {
-  include 'com.enonic.lib:lib-thymeleaf:1.0.1'
+  include 'com.enonic.lib:lib-thymeleaf:2.0.0'
 }
 ----
 
