@@ -15,6 +15,6 @@ dependencies {
     compile "com.enonic.xp:core-api:${xpVersion}"
     compile "com.enonic.xp:portal-api:${xpVersion}"
     compile 'org.thymeleaf:thymeleaf:3.0.0.RELEASE'
-    testCompile 'org.mockito:mockito-core:2.27.0'
+    testCompile 'org.mockito:mockito-core:3.4.2'
     testCompile "com.enonic.xp:testing:${xpVersion}"
 }
