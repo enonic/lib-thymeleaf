@@ -16,6 +16,6 @@ dependencies {
     compileOnly "com.enonic.xp:portal-api:${xpVersion}"
     implementation 'org.thymeleaf:thymeleaf:3.1.2.RELEASE'
     testRuntimeOnly "com.fasterxml.jackson.core:jackson-databind:2.15.3"
-    testImplementation 'org.mockito:mockito-core:5.6.0'
+    testImplementation 'org.mockito:mockito-core:5.7.0'
     testImplementation "com.enonic.xp:testing:${xpVersion}"
 }
