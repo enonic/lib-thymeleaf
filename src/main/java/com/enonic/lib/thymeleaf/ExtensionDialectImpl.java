@@ -1,13 +1,12 @@
 package com.enonic.lib.thymeleaf;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import org.thymeleaf.dialect.AbstractProcessorDialect;
 import org.thymeleaf.dialect.IExpressionObjectDialect;
 import org.thymeleaf.expression.IExpressionObjectFactory;
 import org.thymeleaf.processor.IProcessor;
-
-import com.google.common.collect.Sets;
 
 final class ExtensionDialectImpl
     extends AbstractProcessorDialect
@@ -26,7 +25,7 @@ final class ExtensionDialectImpl
     @Override
     public Set<IProcessor> getProcessors( final String dialectPrefix )
     {
-        final Set<IProcessor> processors = Sets.newHashSet();
+        final Set<IProcessor> processors = new HashSet<>();
         processors.add( new ComponentProcessor( dialectPrefix ) );
         return processors;
     }

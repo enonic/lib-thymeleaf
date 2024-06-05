@@ -1,12 +1,11 @@
 package com.enonic.lib.thymeleaf;
 
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
 import org.thymeleaf.context.IExpressionContext;
 import org.thymeleaf.expression.IExpressionObjectFactory;
-
-import com.google.common.collect.Maps;
 
 final class MapExpressionObjectFactory
     implements IExpressionObjectFactory
@@ -15,7 +14,7 @@ final class MapExpressionObjectFactory
 
     public MapExpressionObjectFactory()
     {
-        this.map = Maps.newHashMap();
+        this.map = new HashMap<>();
     }
 
     @Override

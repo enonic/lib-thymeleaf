@@ -1,15 +1,14 @@
 package com.enonic.lib.thymeleaf;
 
+import java.util.HashMap;
 import java.util.Map;
 
-import org.apache.commons.io.FilenameUtils;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.TemplateSpec;
 import org.thymeleaf.context.Context;
 import org.thymeleaf.exceptions.TemplateProcessingException;
 import org.thymeleaf.templatemode.TemplateMode;
 
-import com.google.common.collect.Maps;
 import com.google.common.io.Files;
 
 import com.enonic.xp.resource.ResourceKey;
@@ -31,7 +30,7 @@ public final class ThymeleafProcessor
     public ThymeleafProcessor( final TemplateEngine engine, final ThymeleafViewFunctions viewFunctions )
     {
         this.engine = engine;
-        this.parameters = Maps.newHashMap();
+        this.parameters = new HashMap<>();
 
         this.parameters.put( "portal", viewFunctions );
     }
@@ -147,7 +146,7 @@ public final class ThymeleafProcessor
     private String resolveTemplatePath( final String templateName )
     {
         String path = templateName;
-        if ( FilenameUtils.getExtension( templateName ).isEmpty() )
+        if ( Files.getFileExtension( templateName ).isEmpty() )
         {
             path += ".html";
         }

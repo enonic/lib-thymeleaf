@@ -23,10 +23,10 @@ var service = __.newBean('com.enonic.lib.thymeleaf.ThymeleafService');
  */
 exports.render = function (view, model, options) {
     var processor = service.newProcessor();
-    processor.view = view;
-    processor.model = __.toScriptValue(model);
+    processor.setView(view);
+    processor.setModel(__.toScriptValue(model));
 
     var opts = options || {};
-    processor.mode = opts.mode || 'HTML';
+    processor.setMode(opts.mode || 'HTML');
     return processor.process();
 };

@@ -3,10 +3,7 @@ package com.enonic.lib.thymeleaf;
 import java.util.Set;
 
 import org.thymeleaf.TemplateEngine;
-import org.thymeleaf.dialect.IDialect;
 import org.thymeleaf.standard.StandardDialect;
-
-import com.google.common.collect.Sets;
 
 import com.enonic.xp.portal.PortalRequestAccessor;
 import com.enonic.xp.portal.view.ViewFunctionService;
@@ -23,12 +20,7 @@ public final class ThymeleafService
     public ThymeleafService()
     {
         this.engine = new TemplateEngine();
-
-        final Set<IDialect> dialects = Sets.newHashSet();
-        dialects.add( new ExtensionDialectImpl() );
-        dialects.add( new StandardDialect() );
-
-        this.engine.setDialects( dialects );
+        this.engine.setDialects( Set.of( new ExtensionDialectImpl(), new StandardDialect() ) );
     }
 
     public ThymeleafProcessor newProcessor()
