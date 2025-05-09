@@ -3,13 +3,14 @@ package com.enonic.lib.thymeleaf;
 import java.util.TimeZone;
 import java.util.regex.Pattern;
 
-import org.junit.Assert;
-
 import com.google.common.base.Joiner;
 import com.google.common.base.Splitter;
 
+import com.enonic.lib.thymeleaf.view.ViewFunctionService;
 import com.enonic.xp.resource.ResourceKey;
 import com.enonic.xp.testing.ScriptRunnerSupport;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ThymeleafScriptTest
     extends ScriptRunnerSupport
@@ -25,12 +26,15 @@ public class ThymeleafScriptTest
         throws Exception
     {
         super.initialize();
+
+        addService( ViewFunctionService.class, new MockViewFunctionService() );
+
         TimeZone.setDefault( TimeZone.getTimeZone( "GMT" ) );
     }
 
     private void assertHtmlEquals( final String expectedHtml, final String actualHtml )
     {
-        Assert.assertEquals( normalizeText( expectedHtml ), normalizeText( actualHtml ) );
+        assertEquals( normalizeText( expectedHtml ), normalizeText( actualHtml ) );
     }
 
     public void assertHtmlEquals( final ResourceKey resource, final String actualHtml )
