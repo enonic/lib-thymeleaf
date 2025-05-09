@@ -5,8 +5,8 @@ import java.util.Set;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.standard.StandardDialect;
 
+import com.enonic.lib.thymeleaf.view.ViewFunctionService;
 import com.enonic.xp.portal.PortalRequestAccessor;
-import com.enonic.xp.portal.view.ViewFunctionService;
 import com.enonic.xp.script.bean.BeanContext;
 import com.enonic.xp.script.bean.ScriptBean;
 
