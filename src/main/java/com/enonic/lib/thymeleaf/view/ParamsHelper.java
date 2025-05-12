@@ -1,4 +1,4 @@
-package com.enonic.lib.thymeleaf.view.impl;
+package com.enonic.lib.thymeleaf.view;
 
 import java.util.Collection;
 
@@ -26,7 +26,7 @@ public final class ParamsHelper
         return values.iterator().next();
     }
 
-    static Collection<String> multipleValues( final Multimap<String, String> map, final String name )
+    public static Collection<String> multipleValues( final Multimap<String, String> map, final String name )
     {
         return map.removeAll( name );
     }

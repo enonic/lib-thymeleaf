@@ -9,7 +9,7 @@ import com.google.common.collect.Multimap;
 import com.enonic.xp.convert.Converters;
 import com.enonic.xp.portal.PortalRequest;
 
-import static com.enonic.lib.thymeleaf.view.impl.ParamsHelper.singleValue;
+import static com.enonic.lib.thymeleaf.view.ParamsHelper.singleValue;
 
 public final class ViewFunctionParams
 {

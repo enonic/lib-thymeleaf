@@ -13,7 +13,7 @@ import com.enonic.xp.portal.url.IdentityUrlParams;
 import com.enonic.xp.portal.url.PortalUrlService;
 import com.enonic.xp.security.IdProviderKey;
 
-import static com.enonic.lib.thymeleaf.view.impl.ParamsHelper.singleValue;
+import static com.enonic.lib.thymeleaf.view.ParamsHelper.singleValue;
 
 @Component(immediate = true)
 public final class IdProviderUrlFunction
@@ -40,7 +40,7 @@ public final class IdProviderUrlFunction
 
         final Multimap<String, String> arguments = params.getArgs();
 
-        urlParams.portalRequest( PortalRequestAccessor.get() ); // TODO: remove this, XP must resolve the request
+        urlParams.portalRequest( PortalRequestAccessor.get() ); // TODO: remove this, XP8 must resolve the request
         urlParams.type( singleValue( arguments, "_type" ) );
         urlParams.contextPathType( singleValue( arguments, "_contextPath" ) );
         urlParams.redirectionUrl( singleValue( arguments, "_redirect" ) );

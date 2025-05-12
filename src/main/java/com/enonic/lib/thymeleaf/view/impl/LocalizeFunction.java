@@ -14,8 +14,8 @@ import com.enonic.xp.i18n.LocaleService;
 import com.enonic.xp.i18n.MessageBundle;
 import com.enonic.xp.portal.PortalRequestAccessor;
 
-import static com.enonic.lib.thymeleaf.view.impl.ParamsHelper.multipleValues;
-import static com.enonic.lib.thymeleaf.view.impl.ParamsHelper.singleValue;
+import static com.enonic.lib.thymeleaf.view.ParamsHelper.multipleValues;
+import static com.enonic.lib.thymeleaf.view.ParamsHelper.singleValue;
 
 @Component(immediate = true)
 public final class LocalizeFunction

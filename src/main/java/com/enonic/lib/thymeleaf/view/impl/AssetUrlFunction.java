@@ -12,7 +12,7 @@ import com.enonic.xp.portal.PortalRequestAccessor;
 import com.enonic.xp.portal.url.AssetUrlParams;
 import com.enonic.xp.portal.url.PortalUrlService;
 
-import static com.enonic.lib.thymeleaf.view.impl.ParamsHelper.singleValue;
+import static com.enonic.lib.thymeleaf.view.ParamsHelper.singleValue;
 
 @Component(immediate = true)
 public final class AssetUrlFunction
@@ -39,7 +39,7 @@ public final class AssetUrlFunction
 
         final Multimap<String, String> arguments = params.getArgs();
 
-        urlParams.portalRequest( PortalRequestAccessor.get() ); // TODO: remove this, XP must resolve the request
+        urlParams.portalRequest( PortalRequestAccessor.get() ); // TODO: remove this, XP8 must resolve the request
         urlParams.path( singleValue( arguments, "_path" ) );
         urlParams.application( singleValue( arguments, "_application" ) );
         urlParams.contextPathType( singleValue( arguments, "_contextPath" ) );

@@ -15,7 +15,7 @@ import com.enonic.xp.security.IdProviderKey;
 import com.enonic.xp.web.vhost.VirtualHost;
 import com.enonic.xp.web.vhost.VirtualHostHelper;
 
-import static com.enonic.lib.thymeleaf.view.impl.ParamsHelper.singleValue;
+import static com.enonic.lib.thymeleaf.view.ParamsHelper.singleValue;
 
 @Component(immediate = true)
 public final class LoginUrlFunction
@@ -42,7 +42,7 @@ public final class LoginUrlFunction
 
         final Multimap<String, String> arguments = params.getArgs();
 
-        urlParams.portalRequest( PortalRequestAccessor.get() ); // TODO: remove this, XP must resolve the request
+        urlParams.portalRequest( PortalRequestAccessor.get() ); // TODO: remove this, XP8 must resolve the request
         urlParams.idProviderFunction( "login" );
         urlParams.idProviderKey( retrieveIdProviderKey( singleValue( arguments, "_idProvider" ) ) );
         urlParams.type( singleValue( arguments, "_type" ) );
