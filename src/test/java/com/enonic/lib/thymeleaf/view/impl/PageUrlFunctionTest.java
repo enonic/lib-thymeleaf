@@ -1,5 +1,6 @@
 package com.enonic.lib.thymeleaf.view.impl;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
 
@@ -20,11 +21,27 @@ import static org.mockito.Mockito.when;
 
 public class PageUrlFunctionTest
 {
+    private PortalUrlService urlService;
+
+    private PageUrlFunction function;
+
+    @BeforeEach
+    void setUp()
+    {
+        urlService = mock( PortalUrlService.class );
+        function = new PageUrlFunction( urlService );
+    }
+
+    @Test
+    void testName()
+    {
+        assertEquals( "pageUrl", function.getName() );
+    }
+
     @Test
     void testExecute()
     {
         // prepare
-        PortalUrlService urlService = mock( PortalUrlService.class );
         ViewFunctionParams params = mock( ViewFunctionParams.class );
 
         Multimap<String, String> args = LinkedHashMultimap.create();
@@ -42,7 +59,6 @@ public class PageUrlFunctionTest
         when( urlService.pageUrl( any( PageUrlParams.class ) ) ).thenReturn( "mockedUrl" );
 
         // test
-        PageUrlFunction function = new PageUrlFunction( urlService );
         Object result = function.execute( params );
 
         // verify

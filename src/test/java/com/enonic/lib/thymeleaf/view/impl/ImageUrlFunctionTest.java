@@ -1,5 +1,6 @@
 package com.enonic.lib.thymeleaf.view.impl;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
 
@@ -12,7 +13,6 @@ import com.enonic.xp.portal.url.ImageUrlParams;
 import com.enonic.xp.portal.url.PortalUrlService;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mock;
@@ -21,11 +21,27 @@ import static org.mockito.Mockito.when;
 
 public class ImageUrlFunctionTest
 {
+    private PortalUrlService urlService;
+
+    private ImageUrlFunction function;
+
+    @BeforeEach
+    void setUp()
+    {
+        urlService = mock( PortalUrlService.class );
+        function = new ImageUrlFunction( urlService );
+    }
+
+    @Test
+    void testName()
+    {
+        assertEquals( "imageUrl", function.getName() );
+    }
+
     @Test
     void testExecute()
     {
         // prepare
-        PortalUrlService urlService = mock( PortalUrlService.class );
         ViewFunctionParams params = mock( ViewFunctionParams.class );
 
         Multimap<String, String> args = LinkedHashMultimap.create();
@@ -47,7 +63,6 @@ public class ImageUrlFunctionTest
         when( urlService.imageUrl( any( ImageUrlParams.class ) ) ).thenReturn( "mockedUrl" );
 
         // test
-        ImageUrlFunction function = new ImageUrlFunction( urlService );
         Object result = function.execute( params );
 
         // verify

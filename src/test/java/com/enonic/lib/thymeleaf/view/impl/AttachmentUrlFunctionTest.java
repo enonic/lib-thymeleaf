@@ -1,5 +1,6 @@
 package com.enonic.lib.thymeleaf.view.impl;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
 
@@ -20,11 +21,27 @@ import static org.mockito.Mockito.when;
 
 public class AttachmentUrlFunctionTest
 {
+    private PortalUrlService urlService;
+
+    private AttachmentUrlFunction function;
+
+    @BeforeEach
+    void setUp()
+    {
+        urlService = mock( PortalUrlService.class );
+        function = new AttachmentUrlFunction( urlService );
+    }
+
+    @Test
+    void testName()
+    {
+        assertEquals( "attachmentUrl", function.getName() );
+    }
+
     @Test
     void testExecute()
     {
         // prepare
-        PortalUrlService urlService = mock( PortalUrlService.class );
         ViewFunctionParams params = mock( ViewFunctionParams.class );
 
         Multimap<String, String> args = LinkedHashMultimap.create();
@@ -44,7 +61,6 @@ public class AttachmentUrlFunctionTest
         when( urlService.attachmentUrl( any( AttachmentUrlParams.class ) ) ).thenReturn( "mockedUrl" );
 
         // test
-        AttachmentUrlFunction function = new AttachmentUrlFunction( urlService );
         Object result = function.execute( params );
 
         // verify

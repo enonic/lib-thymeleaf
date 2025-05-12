@@ -1,5 +1,6 @@
 package com.enonic.lib.thymeleaf.view.impl;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
 
@@ -22,11 +23,27 @@ import static org.mockito.Mockito.when;
 
 public class IdProviderUrlFunctionTest
 {
+    private PortalUrlService urlService;
+
+    private IdProviderUrlFunction function;
+
+    @BeforeEach
+    void setUp()
+    {
+        urlService = mock( PortalUrlService.class );
+        function = new IdProviderUrlFunction( urlService );
+    }
+
+    @Test
+    void testName()
+    {
+        assertEquals( "idProviderUrl", function.getName() );
+    }
+
     @Test
     void testExecute()
     {
         // prepare
-        PortalUrlService urlService = mock( PortalUrlService.class );
         ViewFunctionParams params = mock( ViewFunctionParams.class );
 
         Multimap<String, String> args = LinkedHashMultimap.create();
@@ -42,7 +59,6 @@ public class IdProviderUrlFunctionTest
         when( urlService.identityUrl( any( IdentityUrlParams.class ) ) ).thenReturn( "mockedUrl" );
 
         // test
-        IdProviderUrlFunction function = new IdProviderUrlFunction( urlService );
         Object result = function.execute( params );
 
         // verify

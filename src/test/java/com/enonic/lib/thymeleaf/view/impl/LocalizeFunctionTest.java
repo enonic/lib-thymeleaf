@@ -3,6 +3,7 @@ package com.enonic.lib.thymeleaf.view.impl;
 import java.util.List;
 import java.util.Locale;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
 
@@ -22,11 +23,27 @@ import static org.mockito.Mockito.when;
 
 public class LocalizeFunctionTest
 {
+    private LocaleService localeService;
+
+    private LocalizeFunction function;
+
+    @BeforeEach
+    void setUp()
+    {
+        localeService = mock( LocaleService.class );
+        function = new LocalizeFunction( localeService );
+    }
+
+    @Test
+    void testName()
+    {
+        assertEquals( "i18n.localize", function.getName() );
+    }
+
     @Test
     void testExecute()
     {
         // prepare
-        LocaleService localeService = mock( LocaleService.class );
         ViewFunctionParams params = mock( ViewFunctionParams.class );
         MessageBundle messageBundle = mock( MessageBundle.class );
 
@@ -41,16 +58,15 @@ public class LocalizeFunctionTest
         when( localeService.getBundle( any( ApplicationKey.class ), any( Locale.class ) ) ).thenReturn( messageBundle );
 
         // test
-        LocalizeFunction function = new LocalizeFunction( localeService );
         function.execute( params );
 
         // verify
-        ArgumentCaptor<String> keyCaptor = ArgumentCaptor.forClass(String.class);
-        ArgumentCaptor<Object[]> paramsCaptor = ArgumentCaptor.forClass(Object[].class);
+        ArgumentCaptor<String> keyCaptor = ArgumentCaptor.forClass( String.class );
+        ArgumentCaptor<Object[]> paramsCaptor = ArgumentCaptor.forClass( Object[].class );
 
-        verify(messageBundle).localize(keyCaptor.capture(), paramsCaptor.capture());
+        verify( messageBundle ).localize( keyCaptor.capture(), paramsCaptor.capture() );
 
-        assertEquals("key", keyCaptor.getValue());
-        assertEquals( List.of("phrases").toArray()[0], paramsCaptor.getValue()[0]);
+        assertEquals( "key", keyCaptor.getValue() );
+        assertEquals( List.of( "phrases" ).toArray()[0], paramsCaptor.getValue()[0] );
     }
 }

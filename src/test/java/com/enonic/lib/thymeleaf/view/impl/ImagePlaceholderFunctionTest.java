@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import com.enonic.lib.thymeleaf.view.ViewFunctionParams;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
@@ -12,6 +13,12 @@ import static org.mockito.Mockito.when;
 
 public class ImagePlaceholderFunctionTest
 {
+    @Test
+    void testName()
+    {
+        assertEquals( "imagePlaceholder", new ImagePlaceholderFunction().getName() );
+    }
+
     @Test
     void testExecute()
     {

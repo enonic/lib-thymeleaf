@@ -28,12 +28,17 @@ import static org.mockito.Mockito.when;
 
 public class LoginUrlFunctionTest
 {
+    private PortalUrlService urlService;
+
+    private LoginUrlFunction function;
 
     private PortalRequest mockRequest;
 
     @BeforeEach
     void setUp()
     {
+        urlService = mock( PortalUrlService.class );
+        function = new LoginUrlFunction( urlService );
         mockRequest = mock( PortalRequest.class );
 
         PortalRequestAccessor.set( mockRequest );
@@ -46,10 +51,14 @@ public class LoginUrlFunctionTest
     }
 
     @Test
+    void testName()
+    {
+        assertEquals( "loginUrl", function.getName() );
+    }
+
+    @Test
     void testExecute()
     {
-        PortalUrlService urlService = mock( PortalUrlService.class );
-
         VirtualHost virtualHost = mock( VirtualHost.class );
         when( virtualHost.getDefaultIdProviderKey() ).thenReturn( IdProviderKey.from( "idProviderName" ) );
 
@@ -72,7 +81,6 @@ public class LoginUrlFunctionTest
         when( urlService.identityUrl( any( IdentityUrlParams.class ) ) ).thenReturn( "mockedUrl" );
 
         // test
-        LoginUrlFunction function = new LoginUrlFunction( urlService );
         Object result = function.execute( params );
 
         // verify

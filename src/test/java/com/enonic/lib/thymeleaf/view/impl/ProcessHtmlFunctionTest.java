@@ -2,6 +2,7 @@ package com.enonic.lib.thymeleaf.view.impl;
 
 import java.util.List;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
 
@@ -22,11 +23,27 @@ import static org.mockito.Mockito.when;
 
 public class ProcessHtmlFunctionTest
 {
+    private PortalUrlService urlService;
+
+    private ProcessHtmlFunction function;
+
+    @BeforeEach
+    void setUp()
+    {
+        urlService = mock( PortalUrlService.class );
+        function = new ProcessHtmlFunction( urlService );
+    }
+
+    @Test
+    void testName()
+    {
+        assertEquals( "processHtml", function.getName() );
+    }
+
     @Test
     void testExecute()
     {
         // prepare
-        PortalUrlService urlService = mock( PortalUrlService.class );
         ViewFunctionParams params = mock( ViewFunctionParams.class );
 
         Multimap<String, String> args = LinkedHashMultimap.create();
@@ -45,7 +62,6 @@ public class ProcessHtmlFunctionTest
         when( urlService.processHtml( any( ProcessHtmlParams.class ) ) ).thenReturn( "processedHtml" );
 
         // test
-        ProcessHtmlFunction function = new ProcessHtmlFunction( urlService );
         Object result = function.execute( params );
 
         // verify
