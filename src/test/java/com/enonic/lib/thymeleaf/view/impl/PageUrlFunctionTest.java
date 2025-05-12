@@ -12,7 +12,6 @@ import com.enonic.xp.portal.url.PageUrlParams;
 import com.enonic.xp.portal.url.PortalUrlService;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mock;
@@ -56,8 +55,6 @@ public class PageUrlFunctionTest
         assertEquals( ContextPathType.RELATIVE, capturedParams.getContextPathType() );
         assertEquals( "id", capturedParams.getId() );
         assertEquals( "some/path", capturedParams.getPath() );
-        assertNull( capturedParams.getProjectName() );
-        assertNull( capturedParams.getBranch() );
 
         Multimap<String, String> queryParams = capturedParams.getParams();
 

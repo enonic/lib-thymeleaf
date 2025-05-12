@@ -65,9 +65,6 @@ public class ImageUrlFunctionTest
         assertEquals( 10, capturedParams.getQuality() );
         assertEquals( "background", capturedParams.getBackground() );
         assertEquals( "scale", capturedParams.getScale() );
-        assertNull( capturedParams.getProjectName() );
-        assertNull( capturedParams.getBranch() );
-        assertNull( capturedParams.getBaseUrl() );
 
         Multimap<String, String> queryParams = capturedParams.getParams();
 

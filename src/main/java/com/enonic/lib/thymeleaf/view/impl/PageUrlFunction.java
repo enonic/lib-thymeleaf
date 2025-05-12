@@ -8,6 +8,7 @@ import com.google.common.collect.Multimap;
 
 import com.enonic.lib.thymeleaf.view.ViewFunction;
 import com.enonic.lib.thymeleaf.view.ViewFunctionParams;
+import com.enonic.xp.portal.PortalRequestAccessor;
 import com.enonic.xp.portal.url.PageUrlParams;
 import com.enonic.xp.portal.url.PortalUrlService;
 
@@ -38,6 +39,7 @@ public final class PageUrlFunction
 
         final Multimap<String, String> arguments = params.getArgs();
 
+        urlParams.portalRequest( PortalRequestAccessor.get() ); // TODO: remove this, XP must resolve the request
         urlParams.type( singleValue( arguments, "_type" ) );
         urlParams.contextPathType( singleValue( arguments, "_contextPath" ) );
         urlParams.id( singleValue( arguments, "_id" ) );

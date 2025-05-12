@@ -12,7 +12,6 @@ import com.enonic.xp.portal.url.ContextPathType;
 import com.enonic.xp.portal.url.PortalUrlService;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mock;
@@ -61,9 +60,6 @@ public class AttachmentUrlFunctionTest
         assertEquals( "name", capturedParams.getName() );
         assertEquals( "label", capturedParams.getLabel() );
         assertTrue( capturedParams.isDownload() );
-        assertNull( capturedParams.getProjectName() );
-        assertNull( capturedParams.getBranch() );
-        assertNull( capturedParams.getBaseUrl() );
 
         Multimap<String, String> queryParams = capturedParams.getParams();
 

@@ -14,7 +14,6 @@ import com.enonic.xp.portal.url.PortalUrlService;
 import com.enonic.xp.portal.url.ProcessHtmlParams;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mock;
@@ -60,7 +59,6 @@ public class ProcessHtmlFunctionTest
         assertEquals( "html", capturedParams.getValue() );
         assertEquals( List.of( 768, 1024 ), capturedParams.getImageWidths() );
         assertEquals( "imageSizes", capturedParams.getImageSizes() );
-        assertNull( capturedParams.getBaseUrl() );
 
         Multimap<String, String> queryParams = capturedParams.getParams();
 

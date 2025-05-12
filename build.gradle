@@ -6,10 +6,19 @@ plugins {
     id 'jacoco'
 }
 
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of( 17 )
+    }
+}
+
+sourceCompatibility = JavaVersion.VERSION_17
+targetCompatibility = sourceCompatibility
+
 repositories {
     mavenLocal()
     mavenCentral()
-    xp.enonicRepo()
+    xp.enonicRepo( 'dev' )
 }
 
 dependencies {
