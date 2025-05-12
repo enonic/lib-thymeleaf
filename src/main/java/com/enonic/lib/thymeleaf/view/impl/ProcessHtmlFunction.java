@@ -2,6 +2,7 @@ package com.enonic.lib.thymeleaf.view.impl;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
@@ -48,7 +49,7 @@ public final class ProcessHtmlFunction
         urlParams.contextPathType( singleValue( arguments, "_contextPath" ) );
         urlParams.value( singleValue( arguments, "_value" ) );
         urlParams.imageWidths( Objects.requireNonNullElse( multipleValues( arguments, "_imageWidths" ), List.<String>of() ).stream().map(
-            Integer::parseInt ).toList() );
+            Integer::parseInt ).collect( Collectors.toUnmodifiableList() ) );
         urlParams.imageSizes( singleValue( arguments, "_imageSizes" ) );
 
         arguments.forEach( ( key, value ) -> urlParams.getParams().put( key, value ) );
