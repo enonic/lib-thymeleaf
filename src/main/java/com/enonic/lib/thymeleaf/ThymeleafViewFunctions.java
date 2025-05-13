@@ -2,9 +2,9 @@ package com.enonic.lib.thymeleaf;
 
 import java.util.List;
 
+import com.enonic.lib.thymeleaf.view.ViewFunctionParams;
+import com.enonic.lib.thymeleaf.view.ViewFunctionService;
 import com.enonic.xp.portal.PortalRequest;
-import com.enonic.xp.portal.view.ViewFunctionParams;
-import com.enonic.xp.portal.view.ViewFunctionService;
 
 final class ThymeleafViewFunctions
 {

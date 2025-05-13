@@ -18,9 +18,9 @@ final class TemplateResolverImpl
     extends AbstractConfigurableTemplateResolver
     implements TemplateResourceResolver
 {
-    private BeanContext context;
+    private final BeanContext context;
 
-    private boolean disableCache;
+    private final boolean disableCache;
 
     TemplateResolverImpl( final BeanContext context )
     {
