@@ -9,7 +9,6 @@ import com.google.common.collect.Multimap;
 
 import com.enonic.lib.thymeleaf.view.ViewFunctionParams;
 import com.enonic.xp.portal.url.ComponentUrlParams;
-import com.enonic.xp.portal.url.ContextPathType;
 import com.enonic.xp.portal.url.PortalUrlService;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -46,7 +45,6 @@ public class ComponentUrlFunctionTest
 
         Multimap<String, String> args = LinkedHashMultimap.create();
         args.put( "_type", "absolute" );
-        args.put( "_contextPath", "relative" );
         args.put( "_id", "id" );
         args.put( "_path", "some/path" );
         args.put( "_component", "component" );
@@ -68,7 +66,6 @@ public class ComponentUrlFunctionTest
         ComponentUrlParams capturedParams = captor.getValue();
 
         assertEquals( "absolute", capturedParams.getType() );
-        assertEquals( ContextPathType.RELATIVE, capturedParams.getContextPathType() );
         assertEquals( "id", capturedParams.getId() );
         assertEquals( "some/path", capturedParams.getPath() );
         assertEquals( "component", capturedParams.getComponent() );

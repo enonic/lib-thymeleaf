@@ -8,7 +8,6 @@ import com.google.common.collect.LinkedHashMultimap;
 import com.google.common.collect.Multimap;
 
 import com.enonic.lib.thymeleaf.view.ViewFunctionParams;
-import com.enonic.xp.portal.url.ContextPathType;
 import com.enonic.xp.portal.url.PageUrlParams;
 import com.enonic.xp.portal.url.PortalUrlService;
 
@@ -46,7 +45,6 @@ public class PageUrlFunctionTest
 
         Multimap<String, String> args = LinkedHashMultimap.create();
         args.put( "_type", "absolute" );
-        args.put( "_contextPath", "relative" );
         args.put( "_id", "id" );
         args.put( "_path", "some/path" );
         args.put( "_component", "component" );
@@ -68,7 +66,6 @@ public class PageUrlFunctionTest
         PageUrlParams capturedParams = captor.getValue();
 
         assertEquals( "absolute", capturedParams.getType() );
-        assertEquals( ContextPathType.RELATIVE, capturedParams.getContextPathType() );
         assertEquals( "id", capturedParams.getId() );
         assertEquals( "some/path", capturedParams.getPath() );
 

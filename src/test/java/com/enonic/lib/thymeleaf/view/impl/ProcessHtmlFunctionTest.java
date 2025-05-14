@@ -10,7 +10,6 @@ import com.google.common.collect.LinkedHashMultimap;
 import com.google.common.collect.Multimap;
 
 import com.enonic.lib.thymeleaf.view.ViewFunctionParams;
-import com.enonic.xp.portal.url.ContextPathType;
 import com.enonic.xp.portal.url.PortalUrlService;
 import com.enonic.xp.portal.url.ProcessHtmlParams;
 
@@ -48,7 +47,6 @@ public class ProcessHtmlFunctionTest
 
         Multimap<String, String> args = LinkedHashMultimap.create();
         args.put( "_type", "absolute" );
-        args.put( "_contextPath", "relative" );
         args.put( "_value", "html" );
         args.put( "_imageWidths", "768" );
         args.put( "_imageWidths", "1024" );
@@ -71,7 +69,6 @@ public class ProcessHtmlFunctionTest
         ProcessHtmlParams capturedParams = captor.getValue();
 
         assertEquals( "absolute", capturedParams.getType() );
-        assertEquals( ContextPathType.RELATIVE, capturedParams.getContextPathType() );
         assertEquals( "html", capturedParams.getValue() );
         assertEquals( List.of( 768, 1024 ), capturedParams.getImageWidths() );
         assertEquals( "imageSizes", capturedParams.getImageSizes() );

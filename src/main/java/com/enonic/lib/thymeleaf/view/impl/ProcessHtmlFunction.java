@@ -46,7 +46,6 @@ public final class ProcessHtmlFunction
 
         urlParams.portalRequest( PortalRequestAccessor.get() ); // TODO: remove this, XP8 must resolve the request
         urlParams.type( singleValue( arguments, "_type" ) );
-        urlParams.contextPathType( singleValue( arguments, "_contextPath" ) );
         urlParams.value( singleValue( arguments, "_value" ) );
         urlParams.imageWidths( Objects.requireNonNullElse( multipleValues( arguments, "_imageWidths" ), List.<String>of() ).stream().map(
             Integer::parseInt ).collect( Collectors.toUnmodifiableList() ) );
