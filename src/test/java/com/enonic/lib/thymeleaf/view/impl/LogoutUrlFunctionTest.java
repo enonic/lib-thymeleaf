@@ -1,7 +1,5 @@
 package com.enonic.lib.thymeleaf.view.impl;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -9,6 +7,8 @@ import org.mockito.ArgumentCaptor;
 
 import com.google.common.collect.LinkedHashMultimap;
 import com.google.common.collect.Multimap;
+
+import jakarta.servlet.http.HttpServletRequest;
 
 import com.enonic.lib.thymeleaf.view.ViewFunctionParams;
 import com.enonic.xp.portal.PortalRequest;

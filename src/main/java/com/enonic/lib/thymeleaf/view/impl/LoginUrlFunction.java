@@ -42,7 +42,6 @@ public final class LoginUrlFunction
 
         final Multimap<String, String> arguments = params.getArgs();
 
-        urlParams.portalRequest( PortalRequestAccessor.get() ); // TODO: remove this, XP8 must resolve the request
         urlParams.idProviderFunction( "login" );
         urlParams.idProviderKey( retrieveIdProviderKey( singleValue( arguments, "_idProvider" ) ) );
         urlParams.type( singleValue( arguments, "_type" ) );

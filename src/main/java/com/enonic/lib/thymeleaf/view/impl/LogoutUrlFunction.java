@@ -42,7 +42,6 @@ public final class LogoutUrlFunction
 
         final Multimap<String, String> arguments = params.getArgs();
 
-        urlParams.portalRequest( PortalRequestAccessor.get() ); // TODO: remove this, XP8 must resolve the request
         urlParams.idProviderFunction( "logout" );
         urlParams.idProviderKey( retrieveIdProviderKey( singleValue( arguments, "_idProvider" ) ) );
         urlParams.type( singleValue( arguments, "_type" ) );

@@ -12,7 +12,6 @@ import com.google.common.collect.Multimap;
 
 import com.enonic.lib.thymeleaf.view.ViewFunction;
 import com.enonic.lib.thymeleaf.view.ViewFunctionParams;
-import com.enonic.xp.portal.PortalRequestAccessor;
 import com.enonic.xp.portal.url.PortalUrlService;
 import com.enonic.xp.portal.url.ProcessHtmlParams;
 
@@ -44,11 +43,12 @@ public final class ProcessHtmlFunction
 
         final Multimap<String, String> arguments = params.getArgs();
 
-        urlParams.portalRequest( PortalRequestAccessor.get() ); // TODO: remove this, XP8 must resolve the request
         urlParams.type( singleValue( arguments, "_type" ) );
         urlParams.value( singleValue( arguments, "_value" ) );
-        urlParams.imageWidths( Objects.requireNonNullElse( multipleValues( arguments, "_imageWidths" ), List.<String>of() ).stream().map(
-            Integer::parseInt ).collect( Collectors.toUnmodifiableList() ) );
+        urlParams.imageWidths( Objects.requireNonNullElse( multipleValues( arguments, "_imageWidths" ), List.<String>of() )
+                                   .stream()
+                                   .map( Integer::parseInt )
+                                   .collect( Collectors.toUnmodifiableList() ) );
         urlParams.imageSizes( singleValue( arguments, "_imageSizes" ) );
 
         arguments.forEach( ( key, value ) -> urlParams.getParams().put( key, value ) );
