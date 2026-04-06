@@ -40,7 +40,6 @@ public final class IdProviderUrlFunction
         final Multimap<String, String> arguments = params.getArgs();
 
         urlParams.type( singleValue( arguments, "_type" ) );
-        urlParams.contextPathType( singleValue( arguments, "_contextPath" ) );
         urlParams.redirectionUrl( singleValue( arguments, "_redirect" ) );
 
         final String idProviderKey = singleValue( arguments, "_idProvider" );

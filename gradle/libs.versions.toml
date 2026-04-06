@@ -3,11 +3,12 @@
 junit = "6.0.3"
 mockito = "5.21.0"
 enonicDefaults = "2.1.6"
-enonicXpGradle = "4.0.0-A2"
+enonicXpGradle = "4.0.0-A3"
 
 [libraries]
 
-junit-jupiter = { module = "org.junit.jupiter:junit-jupiter", version.ref = "junit" }
+junit-bom = { module = "org.junit:junit-bom", version.ref = "junit" }
+junit-jupiter = { module = "org.junit.jupiter:junit-jupiter" }
 junit-launcher = { module = "org.junit.platform:junit-platform-launcher" }
 mockito-core = { module = "org.mockito:mockito-bom", version.ref = "mockito" }
 mockito-jupiter = { module = "org.mockito:mockito-junit-jupiter", version.ref = "mockito" }

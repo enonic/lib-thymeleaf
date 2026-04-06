@@ -45,7 +45,6 @@ public final class LogoutUrlFunction
         urlParams.idProviderFunction( "logout" );
         urlParams.idProviderKey( retrieveIdProviderKey( singleValue( arguments, "_idProvider" ) ) );
         urlParams.type( singleValue( arguments, "_type" ) );
-        urlParams.contextPathType( singleValue( arguments, "_contextPath" ) );
         urlParams.redirectionUrl( singleValue( arguments, "_redirect" ) );
 
         arguments.forEach( ( key, value ) -> urlParams.getParams().put( key, value ) );

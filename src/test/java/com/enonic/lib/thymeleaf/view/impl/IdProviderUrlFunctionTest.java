@@ -68,7 +68,6 @@ public class IdProviderUrlFunctionTest
         IdentityUrlParams capturedParams = captor.getValue();
 
         assertEquals( "absolute", capturedParams.getType() );
-        assertEquals( ContextPathType.VHOST, capturedParams.getContextPathType() );
         assertEquals( "redirectUrl", capturedParams.getRedirectionUrl() );
         assertEquals( IdProviderKey.from( "idProviderName" ), capturedParams.getIdProviderKey() );
         assertNull( capturedParams.getIdProviderFunction() );

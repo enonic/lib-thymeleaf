@@ -90,7 +90,6 @@ public class LoginUrlFunctionTest
         IdentityUrlParams capturedParams = captor.getValue();
 
         assertEquals( "absolute", capturedParams.getType() );
-        assertEquals( ContextPathType.VHOST, capturedParams.getContextPathType() );
         assertEquals( "redirectUrl", capturedParams.getRedirectionUrl() );
         assertEquals( IdProviderKey.from( "idProviderName" ), capturedParams.getIdProviderKey() );
         assertEquals( "login", capturedParams.getIdProviderFunction() );
@@ -137,7 +136,6 @@ public class LoginUrlFunctionTest
         IdentityUrlParams capturedParams = captor.getValue();
 
         assertEquals( "absolute", capturedParams.getType() );
-        assertEquals( ContextPathType.VHOST, capturedParams.getContextPathType() );
         assertEquals( "redirectUrl", capturedParams.getRedirectionUrl() );
         assertEquals( IdProviderKey.from( "myIdProvider" ), capturedParams.getIdProviderKey() );
         assertEquals( "login", capturedParams.getIdProviderFunction() );
