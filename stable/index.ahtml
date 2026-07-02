@@ -453,13 +453,20 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="content">
 <div id="preamble">
 <div class="sectionbody">
-<div class="imageblock right">
-<div class="content">
-<img src="https://img.shields.io/badge/xp-7.+-blue.svg" alt="xp 7.+ blue">
-</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Versions 3.x target XP 8+.
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
-<p>Thymeleaf library allows you to render templates using the <a href="https://www.thymeleaf.org/">Thymeleaf template engine</a></p>
+<p>Thymeleaf library allows you to render templates using the <a href="https://www.thymeleaf.org/">Thymeleaf template engine</a>.</p>
 </div>
 <div class="paragraph">
 <p>To start using this library, add the following into your <code>build.gradle</code> file:</p>
@@ -467,7 +474,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-groovy" data-lang="groovy">dependencies {
-  include 'com.enonic.lib:lib-thymeleaf:2.0.0'
+  include "com.enonic.lib:lib-thymeleaf:${libVersion}"
 }</code></pre>
 </div>
 </div>
@@ -606,7 +613,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2026-07-02 07:49:54 UTC
+Last updated 2026-07-02 07:50:26 UTC
 </div>
 </div>
 </body>
