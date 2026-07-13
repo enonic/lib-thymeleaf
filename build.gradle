@@ -17,7 +17,7 @@ dependencies {
     compileOnly xplibs.api.portal
     implementation 'org.thymeleaf:thymeleaf:3.1.5.RELEASE'
 
-    testRuntimeOnly "com.fasterxml.jackson.core:jackson-databind:2.22.0"
+    testRuntimeOnly "com.fasterxml.jackson.core:jackson-databind:2.22.1"
     testImplementation platform( libs.junit.bom )
     testImplementation platform( libs.mockito.core )
     testImplementation libs.junit.jupiter
